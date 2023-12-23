@@ -17,7 +17,7 @@ spec:
       containers:
         - name: shopping
           image: malekinsat/shopping-service:latest
-          imagePullPolicy: IfNotPresent
+          imagePullPolicy: Always
           ports:
             - containerPort: 8003 # The port that the container is running on in the cluster
           envFrom:
