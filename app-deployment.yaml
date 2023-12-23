@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: shopping-deployment
+  labels:
+    app: shopping
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: shopping
+  template:
+    metadata:
+      labels:
+        app: shopping
+    spec:
+      containers:
+        - name: shopping
+          image: malekinsat/shopping-service:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8003 # The port that the container is running on in the cluster
+
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: shopping-service
+spec:
+  selector:
+    app: shopping
+  type: LoadBalancer
+  ports:
+    - protocol: TCP
+      port: 5002 # The port that the service is running on in the cluster
+      targetPort: 8003 # The port exposed by the service # Forwards to container's port
+
+      
