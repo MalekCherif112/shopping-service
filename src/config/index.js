@@ -1,7 +1,3 @@
-const dotEnv= require("dotenv").
-config({path: process.env.NODE_ENV!== 'prod' && 
-"C:\\Users\\cheri\\Desktop\\Microservices\\nodejs_microservice-master\\shopping\\.env"})
-
 module.exports = {
 
     PORT: process.env.PORT,
